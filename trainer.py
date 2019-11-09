@@ -30,7 +30,7 @@ class Trainer(object):
 
         # Copy files
         utils.write_config_to_file(self.config, self.config.save_path)
-        utils.copy_scripts(self.config.save_path)
+        # utils.copy_scripts(self.config.save_path)
 
         # Check for CUDA
         utils.check_for_CUDA(self)
@@ -69,6 +69,7 @@ class Trainer(object):
             fixed_labels = torch.from_numpy(np.tile(np.arange(self.num_of_classes), self.config.batch_size_in_gpu//self.num_of_classes + 1)[:self.config.batch_size_in_gpu]).to(self.device)
         else:
             fixed_labels = torch.from_numpy(np.arange(self.config.batch_size_in_gpu)).to(self.device)
+        fixed_labels = fixed_labels.to(torch.long)
 
         # For gan loss
         label = torch.full((self.config.batch_size_in_gpu,), 1, device=self.device)

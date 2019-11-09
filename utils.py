@@ -43,7 +43,7 @@ def make_transform(resize=True, imsize=128, centercrop=False, centercrop_size=12
                    normalize=False, norm_mean=(0.5, 0.5, 0.5), norm_std=(0.5, 0.5, 0.5)):
         options = []
         if resize:
-            options.append(transforms.Resize((imsize)))
+            options.append(transforms.Resize((imsize, imsize)))
         if centercrop:
             options.append(transforms.CenterCrop(centercrop_size))
         if totensor:

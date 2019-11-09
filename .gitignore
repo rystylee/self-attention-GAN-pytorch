@@ -102,3 +102,12 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# editor
+.vscode/*
+
+# dataset
+data/*
+
+# checkpoint
+checkpoint/*
